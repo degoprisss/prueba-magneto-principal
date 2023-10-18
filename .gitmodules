@@ -1,0 +1,6 @@
+[submodule "producer"]
+	path = producer
+	url = https://github.com/degoprisss/prueba-magneto-producer.git
+[submodule "consumer"]
+	path = consumer
+	url = https://github.com/degoprisss/prueba-magneto-consumer.git
