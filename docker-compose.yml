@@ -1,0 +1,32 @@
+version: '3'
+services:
+  producer:
+    build:
+      context: ./producer
+    ports:
+      - "3000:3000"
+    environment:
+      - RABBITMQ_HOST=rabbitmq
+    depends_on:
+      - rabbitmq
+
+  consumer:
+    build:
+      context: ./consumer
+    ports:
+      - "4000:4000"
+    environment:
+      - DB_MONGO_URI=mongodb://mongo:27017/mydb
+    depends_on:
+      - mongo
+
+  rabbitmq:
+    image: "rabbitmq:3-management"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
+  mongo:
+    image: "mongo:latest"
+    ports:
+      - "27017:27017"
